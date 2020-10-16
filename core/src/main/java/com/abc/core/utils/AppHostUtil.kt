@@ -2,7 +2,6 @@ package com.abc.core.utils
 
 import android.text.TextUtils
 import com.abc.core.BuildConfig
-import com.abc.core.okhttp.HttpChannel
 
 
 /**
@@ -68,7 +67,6 @@ object AppHostUtil {
     //切换服务器
     fun setHostUrl(url: String) {
         connectHostApi = url
-        HttpChannel.getInstance().resetHost()
     }
 
 }

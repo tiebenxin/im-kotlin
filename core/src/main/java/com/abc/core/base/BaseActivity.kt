@@ -1,32 +1,38 @@
 package com.abc.core.base
 
+import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
-import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.NonNull
-import androidx.appcompat.app.AppCompatActivity
-import com.abc.core.AppConfig
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.ViewModel
 import com.abc.core.R
+import com.abc.core.constans.AppConfig
 import com.abc.core.dialog.DialogLoadingProgress
 import com.abc.core.utils.LogUtil
+import com.abc.core.utils.StatusBarKt
 import com.abc.core.utils.ThreadUtil
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import org.koin.androidx.viewmodel.ext.android.getViewModel
+import kotlin.reflect.KClass
 
 /**
  *@author Liszt
  *@date 2020/10/14
  *Description
  */
-open class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity<T : ViewModel, M : ViewDataBinding> : BaseActivity2() {
+    lateinit var mViewModel: T
+    lateinit var mViewBinding: M
     var context: Context? = null
     lateinit var inflater: LayoutInflater
     var isFirstRequestPermissionsResult: Boolean? = true//第一次请求权限返回
@@ -48,13 +54,24 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
+    abstract fun initData()
 
-    protected override fun onCreate(savedInstanceState: Bundle?) {
+    abstract fun initView()
+
+    abstract fun getLayoutResId(): Int
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         //initFont();
         context = applicationContext
         inflater = layoutInflater
         window.statusBarColor = resources.getColor(R.color.white)
         super.onCreate(savedInstanceState)
+        StatusBarKt.fitSystemBar(this)
+        mViewBinding = DataBindingUtil.setContentView(this, getLayoutResId())
+        initViewModel()
+        initData()
+        initView()
         //注册关闭其他页面事件
         EventBus.getDefault().register(mExit)
         //友盟Push后台进行日活统计及多维度推送的必调用方法
@@ -66,16 +83,16 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    protected override fun onResume() {
+    override fun onResume() {
         super.onResume()
         taskClearNotification()
     }
 
-    protected override fun onPause() {
+    override fun onPause() {
         super.onPause()
     }
 
-    protected override fun onDestroy() {
+    override fun onDestroy() {
         super.onDestroy()
         //注销关闭其他页面事件
         EventBus.getDefault().unregister(mExit)
@@ -229,5 +246,13 @@ open class BaseActivity : AppCompatActivity() {
     //activity 是否有效
     private fun isActivityValid(): Boolean {
         return !(this == null || this.isDestroyed || this.isFinishing)
+    }
+
+    @SuppressLint("NewApi")
+    private fun initViewModel() {
+        val clazz =
+            this.javaClass.kotlin.supertypes[0].arguments[0].type!!.classifier!! as KClass<T>
+        mViewModel = getViewModel<T>(clazz) //koin 注入
+
     }
 }

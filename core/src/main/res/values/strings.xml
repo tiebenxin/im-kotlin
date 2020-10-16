@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">core</string>
+    <string name="common_net_error_default">遇到错误了，请稍后再试</string>
+
 </resources>

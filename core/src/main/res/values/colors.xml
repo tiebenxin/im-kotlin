@@ -4,6 +4,18 @@
     <color name="black">#000000</color>
     <color name="black_a_20">#40000000</color>
     <color name="transparent">#00000000</color>
+
+    <!--    gray-->
+    <color name="gray_100">#f1f1f1</color>
+    <color name="gray_200">#dcdddd</color>
+    <color name="gray_250">#B5B5B5</color>
     <color name="gray_300">#868686</color>
+
+    <!--    blue-->
+    <color name="blue_600">#374882</color>
+
+    <!--    green-->
+    <color name="green_500">#32b053</color>
+
 
 </resources>

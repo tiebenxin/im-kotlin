@@ -3,7 +3,7 @@ package com.abc.core.okhttp
 import android.content.Context
 import android.os.Build
 import android.text.TextUtils
-import com.abc.core.AppConfig
+import com.abc.core.constans.AppConfig
 import com.abc.core.bean.TokenBean
 import com.abc.core.utils.MMKVUtil
 import okhttp3.Interceptor
