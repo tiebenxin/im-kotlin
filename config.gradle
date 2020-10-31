@@ -1,5 +1,5 @@
 ext {
-    def android_support_version = "26.1.0"
+    def androidx_appcompat = "1.2.0"
     def gradle_version = '3.5.2'
     lifecycle = '2.2.0'
 
@@ -18,17 +18,12 @@ ext {
     ]
 
     libraries = [
-            supportv7: "com.android.support:appcompat-v7:" + android_support_version,
+            supportv7: "com.android.support:appcompat-v7:" + androidx_appcompat,
 
     ]
 
     dependencies = [
-            "appcompat-v7"       : "com.android.support:appcompat-v7:" + android_support_version,
-            "support-v4"         : "com.android.support:support-v4:" + android_support_version,
-            "design"             : "com.android.support:design:" + android_support_version,
-            "support-annotations": "com.android.support:support-annotations:" + android_support_version,
-            "cardview-v7"        : "com.android.support:cardview-v7:" + android_support_version,
-            "recyclerview"       : "com.android.support:recyclerview-v7:" + android_support_version
+            "androidx_appcompat": "androidx.appcompat:appcompat:" + androidx_appcompat,
     ]
 
     // App dependencies

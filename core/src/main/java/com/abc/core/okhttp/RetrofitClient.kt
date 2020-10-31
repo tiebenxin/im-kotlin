@@ -28,20 +28,20 @@ import javax.net.ssl.X509TrustManager
 
 class RetrofitClient private constructor() {
 
-//    private var retrofit: Retrofit
+    private var retrofit: Retrofit
 
     companion object {
         val instance: RetrofitClient by lazy { RetrofitClient() }
     }
 
 
-//    init {
-//        retrofit = Retrofit.Builder()
-//            .client(client)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .baseUrl(AppHostUtil.httpHost)
-//            .build()
-//    }
+    init {
+        retrofit = Retrofit.Builder()
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(AppHostUtil.httpHost)
+            .build()
+    }
 
     /**
      * 使用自定义logInterceptor 支持 chrome输出，在debug 或 beta版本
@@ -58,7 +58,7 @@ class RetrofitClient private constructor() {
     /**
      * ok give me five
      */
-    val client: OkHttpClient
+    private val client: OkHttpClient
         get() {
             val logInterceptor = JHttpLoggingInterceptor()
             logInterceptor.setLevel(JHttpLoggingInterceptor.Level.BODY)
@@ -83,11 +83,11 @@ class RetrofitClient private constructor() {
         }
 
     //读超时长，单位：毫秒
-    val READ_TIME_OUT = 7676L
+    private val READ_TIME_OUT = 7676L
     //连接时长，单位：毫秒
-    val CONNECT_TIME_OUT = 7676L
+    private val CONNECT_TIME_OUT = 7676L
     //写入时长，单位：毫秒
-    val WRITE_TIME_OUT = 7676L
+    private val WRITE_TIME_OUT = 7676L
 
     /*************************缓存设置 */
     /*
@@ -159,6 +159,10 @@ class RetrofitClient private constructor() {
             .client(client)
             .build()
         return builder.create(service)
+    }
+
+    fun <T> create(service: Class<T>): T {
+        return retrofit.create(service)
     }
 
     /**
