@@ -94,4 +94,6 @@ dependencies {
     api "com.github.bumptech.glide:glide:4.5.0"
     //eventbus
     api 'org.greenrobot:eventbus:3.0.0'
+
+    api 'me.jessyan:retrofit-url-manager:1.4.0'
 }

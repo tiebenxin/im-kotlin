@@ -4,6 +4,7 @@ package com.abc.core.okhttp
 import com.abc.core.BuildConfig
 import com.abc.core.constans.AppConfig
 import com.abc.core.utils.AppHostUtil
+import com.abc.core.utils.LogUtil
 import com.abc.core.utils.NetWorkUtils
 import okhttp3.Cache
 import okhttp3.CacheControl
@@ -36,6 +37,7 @@ class RetrofitClient private constructor() {
 
 
     init {
+        LogUtil.getLog().i(javaClass.simpleName, "--init--retrofit")
         retrofit = Retrofit.Builder()
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
@@ -60,6 +62,7 @@ class RetrofitClient private constructor() {
      */
     private val client: OkHttpClient
         get() {
+            LogUtil.getLog().i(javaClass.simpleName, "--get--OkHttpClient")
             val logInterceptor = JHttpLoggingInterceptor()
             logInterceptor.setLevel(JHttpLoggingInterceptor.Level.BODY)
             val cacheFile = File(AppConfig.context!!.cacheDir, "cache")
@@ -162,6 +165,7 @@ class RetrofitClient private constructor() {
     }
 
     fun <T> create(service: Class<T>): T {
+        LogUtil.getLog().i(javaClass.simpleName, "--create--service")
         return retrofit.create(service)
     }
 

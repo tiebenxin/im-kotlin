@@ -4,7 +4,7 @@ import com.abc.core.bean.TokenBean
 import com.abc.core.okhttp.BaseRepository
 import com.abc.core.okhttp.RetrofitClient
 import com.abc.core.okhttp.data.NetResult
-import com.abc.core.utils.AppHostUtil
+import com.abc.core.utils.encrypt.MD5
 
 /**
  *@author Liszt
@@ -22,16 +22,31 @@ class LoginRepository(private val service: RetrofitClient) : BaseRepository() {
         deviceDetail: String,
         deviceName: String
     ): NetResult<TokenBean> {
+//        return callRequest(call = {
+//            requestLogin(
+//                psw,
+//                phone,
+//                deviceId,
+//                platform,
+//                phoneModel,
+//                installChannel,
+//                deviceDetail,
+//                deviceName
+//            )
+//        })
         return callRequest(call = {
-            requestLogin(
-                psw,
-                phone,
-                deviceId,
-                platform,
-                phoneModel,
-                installChannel,
-                deviceDetail,
-                deviceName
+            var map: Map<String, String> = mutableMapOf(
+                "password" to MD5.md5(psw),
+                "phone" to phone,
+                "devid" to deviceId,
+                "platform" to platform,
+                "phoneModel" to phoneModel,
+                "installChannel" to installChannel,
+                "deviceDetail" to deviceDetail,
+                "deviceName" to deviceName
+            )
+            requestLogin2(
+                map
             )
         })
     }
@@ -47,7 +62,7 @@ class LoginRepository(private val service: RetrofitClient) : BaseRepository() {
         deviceName: String
     ) =
         handleResponse(
-            service.createApi(LoginApi::class.java, AppHostUtil.httpHost)!!.login(
+            service.create(LoginApi::class.java)!!.login(
                 psw,
                 phone,
                 deviceId,
@@ -57,5 +72,12 @@ class LoginRepository(private val service: RetrofitClient) : BaseRepository() {
                 deviceDetail,
                 deviceName
             )
+
+
+        )
+
+    private suspend fun requestLogin2(map: Map<String, String>) =
+        handleResponse(
+            service.create(LoginApi::class.java)!!.login(getRequestBody(map))
         )
 }

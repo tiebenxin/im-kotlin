@@ -2,11 +2,14 @@ package com.abc.core.okhttp
 
 import com.abc.core.okhttp.data.BaseResponse
 import com.abc.core.okhttp.data.NetResult
+import com.google.gson.GsonBuilder
 import com.win.lib_net.exception.DealException
 
 import com.win.lib_net.exception.ResultException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
+import okhttp3.MediaType
+import okhttp3.RequestBody
 
 open class BaseRepository {
 
@@ -37,11 +40,36 @@ open class BaseRepository {
                     )
                 )
             } else {
-                successBlock?.let { it() }
-                NetResult.Success(response.data!!)
+                if (response.code == 0L){
+                    successBlock?.let { it() }
+                    NetResult.Success(response.data!!)
+                }else{
+                    errorBlock?.let { it() }
+                    NetResult.Error(
+                        ResultException(
+                            response.code.toString(),
+                            response.msg
+                        )
+                    )
+                }
+
             }
         }
     }
 
+    public fun getRequestBody(map: Map<String, String>): RequestBody {
+        return RequestBody.create(
+            MediaType.parse("application/json; charset=utf-8"),
+            mapToJSON(map)
+        )
+    }
+
+    /**
+     * 将Map转化为Json
+     */
+    private fun mapToJSON(map: Map<String, String>): String {
+        val gson = GsonBuilder().enableComplexMapKeySerialization().create()
+        return gson.toJson(map)
+    }
 
 }

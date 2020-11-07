@@ -15,15 +15,15 @@ object MD5 {
         try {
             md5 = MessageDigest.getInstance("MD5")
             val bytes = md5!!.digest(string.toByteArray())
-            var result = ""
+            var result = StringBuffer();
             for (b in bytes) {
-                var temp = Integer.toHexString((b and 0xff.toByte()).toInt())
+                var temp = Integer.toHexString(b.toInt() and 0xff)
                 if (temp.length == 1) {
                     temp = "0$temp"
                 }
-                result += temp
+                result.append(temp)
             }
-            return result.toLowerCase()
+            return result.toString().toLowerCase()
         } catch (e: NoSuchAlgorithmException) {
             e.printStackTrace()
         }

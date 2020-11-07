@@ -121,36 +121,65 @@ object DeviceUtils {
     //获取设备ID
     @SuppressLint("HardwareIds")
     fun getDeviceId(context: Context): String? {
-        val telephonyMgr = context
-            .getSystemService(TELEPHONY_SERVICE) as TelephonyManager
-        val id: String
-        if (Build.VERSION.SDK_INT >= 23) {
+        var imei = ""
+        try {
+            val tm = context.getSystemService(TELEPHONY_SERVICE) as TelephonyManager
             if (ActivityCompat.checkSelfPermission(
                     context,
                     Manifest.permission.READ_PHONE_STATE
-                ) !== PackageManager.PERMISSION_GRANTED
+                ) != PackageManager.PERMISSION_GRANTED
             ) {
-                return null
-            }
-            id = if (!TextUtils.isEmpty(telephonyMgr.deviceId)) {
-                telephonyMgr.deviceId
+                // TODO: Consider calling
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Build.VERSION.SDK_INT < 29) {
+                    val method = tm.javaClass.getMethod("getImei")
+                    imei = method.invoke(tm) as String
+                    if (TextUtils.isEmpty(imei)) {
+                        imei = Settings.Secure.getString(
+                            context.contentResolver,
+                            Settings.Secure.ANDROID_ID
+                        )
+                    }
+                } else if (Build.VERSION.SDK_INT >= 29) {
+                    imei = Settings.Secure.getString(
+                        context.contentResolver,
+                        Settings.Secure.ANDROID_ID
+                    )
+                }
             } else {
-                Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
+                if (!TextUtils.isEmpty(tm.deviceId)) {
+                    imei = tm.deviceId
+                } else {
+                    imei = Settings.Secure.getString(
+                        context.contentResolver,
+                        Settings.Secure.ANDROID_ID
+                    )
+                }
             }
-            LogUtil.getLog().d("a=", "$TAG--DeviceId:$id")
-            return id
-
-        } else {
-            assert(telephonyMgr != null)
-            if (!TextUtils.isEmpty(telephonyMgr.deviceId)) {
-                id = telephonyMgr.deviceId
-            } else {
-                id = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
+            if (TextUtils.isEmpty(imei) || imei == "unknown") {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Build.VERSION.SDK_INT < 29) {
+                    val method = tm.javaClass.getMethod("getImei")
+                    imei = method.invoke(tm) as String
+                    if (TextUtils.isEmpty(imei)) {
+                        imei = Settings.Secure.getString(
+                            context.contentResolver,
+                            Settings.Secure.ANDROID_ID
+                        )
+                    }
+                } else if (Build.VERSION.SDK_INT >= 29) {
+                    imei = Settings.Secure.getString(
+                        context.contentResolver,
+                        Settings.Secure.ANDROID_ID
+                    )
+                }
             }
-            LogUtil.getLog().d("a=", "$TAG--DeviceId:$id")
-
-            return id
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
+
+        if (TextUtils.isEmpty(imei)) {
+            imei = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
+        }
+        return imei
     }
 
     /*
