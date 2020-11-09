@@ -40,13 +40,12 @@ object AppConfig {
      * @return
      */
     //系统语言
-    val country: String
+    private val country: String
         get() {
-            val locale: Locale
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                locale = LocaleList.getDefault().get(0)
+            val locale: Locale = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                LocaleList.getDefault().get(0)
             } else {
-                locale = Locale.getDefault()
+                Locale.getDefault()
             }
             return locale.country
         }

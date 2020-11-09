@@ -3,8 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
 
 
     defaultConfig {
@@ -96,4 +96,5 @@ dependencies {
     api 'org.greenrobot:eventbus:3.0.0'
 
     api 'me.jessyan:retrofit-url-manager:1.4.0'
+
 }

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/app_margin_main"
+    android:paddingTop="5dp"
+    android:paddingRight="@dimen/app_margin_main"
+    android:paddingBottom="5dp">
+
+    <TextView
+        android:id="@+id/tv_time"
+        style="@style/app_txt_content_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:textMessage="" />
+
+    <TextView
+        android:id="@+id/tv_broadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/bg_chat_gray_shape"
+        android:gravity="center"
+        android:padding="3dp"
+        android:singleLine="false"
+        android:textMessage="----以下是新消息----"
+        android:textColor="@color/gray_500"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/view_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_select"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:visibility="visible">
+
+            <CheckBox
+                android:id="@+id/ck_select"
+                style="@style/app_check_green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <net.cb.cb.library.view.CircleImageView
+            android:id="@+id/iv_avatar"
+            style="@style/app_img_head"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="10dp"
+            app:radius="@dimen/head_portrait_fillet" />
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/iv_avatar"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/app_txt_content_1"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="left"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textMessage="name" />
+
+            <FrameLayout
+                android:id="@+id/view_bubble_root"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/view_bubble"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/selector_chat_other_touch"
+                    android:gravity="left|center_vertical"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/iv_ref_image"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:gravity="center_vertical"
+                            android:scaleType="fitXY"
+                            android:selectAllOnFocus="true"
+                            android:src="@drawable/ic_info_head" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tv_ref_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="normal"
+                                android:gravity="center_vertical"
+                                android:maxWidth="210dp"
+                                android:selectAllOnFocus="true"
+                                android:textMessage="name"
+                                android:textColor="@color/c_259048"
+                                android:textIsSelectable="false"
+                                android:textSize="13sp" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tv_ref_content"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="normal"
+                                android:gravity="center_vertical"
+                                android:maxWidth="210dp"
+                                android:selectAllOnFocus="true"
+                                android:textMessage="图片"
+                                android:textColor="@color/c_727272"
+                                android:textIsSelectable="false"
+                                android:textSize="11sp" />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/c_259048" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="normal"
+                        android:gravity="center_vertical"
+                        android:maxWidth="210dp"
+                        android:selectAllOnFocus="true"
+                        android:textMessage=""
+                        android:textColor="@color/black"
+                        android:textIsSelectable="false"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_bell"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    android:src="@mipmap/icon_st_1"
+                    android:visibility="visible" />
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

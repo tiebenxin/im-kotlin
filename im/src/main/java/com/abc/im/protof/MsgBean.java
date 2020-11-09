@@ -55824,15 +55824,15 @@ public final class MsgBean {
       com.abc.im.protof.MsgBean.StampMessageOrBuilder getStampOrBuilder();
 
       /**
-       * <code>.BusinessCardMessage business_card = 10006;</code>
+       * <code>.BusinessCardMessage businessCard = 10006;</code>
        */
       boolean hasBusinessCard();
       /**
-       * <code>.BusinessCardMessage business_card = 10006;</code>
+       * <code>.BusinessCardMessage businessCard = 10006;</code>
        */
       com.abc.im.protof.MsgBean.BusinessCardMessage getBusinessCard();
       /**
-       * <code>.BusinessCardMessage business_card = 10006;</code>
+       * <code>.BusinessCardMessage businessCard = 10006;</code>
        */
       com.abc.im.protof.MsgBean.BusinessCardMessageOrBuilder getBusinessCardOrBuilder();
 
@@ -57857,13 +57857,13 @@ public final class MsgBean {
 
       public static final int BUSINESS_CARD_FIELD_NUMBER = 10006;
       /**
-       * <code>.BusinessCardMessage business_card = 10006;</code>
+       * <code>.BusinessCardMessage businessCard = 10006;</code>
        */
       public boolean hasBusinessCard() {
         return realMsgCase_ == 10006;
       }
       /**
-       * <code>.BusinessCardMessage business_card = 10006;</code>
+       * <code>.BusinessCardMessage businessCard = 10006;</code>
        */
       public com.abc.im.protof.MsgBean.BusinessCardMessage getBusinessCard() {
         if (realMsgCase_ == 10006) {
@@ -57872,7 +57872,7 @@ public final class MsgBean {
         return com.abc.im.protof.MsgBean.BusinessCardMessage.getDefaultInstance();
       }
       /**
-       * <code>.BusinessCardMessage business_card = 10006;</code>
+       * <code>.BusinessCardMessage businessCard = 10006;</code>
        */
       public com.abc.im.protof.MsgBean.BusinessCardMessageOrBuilder getBusinessCardOrBuilder() {
         if (realMsgCase_ == 10006) {
@@ -62399,13 +62399,13 @@ public final class MsgBean {
         private com.google.protobuf.SingleFieldBuilderV3<
             com.abc.im.protof.MsgBean.BusinessCardMessage, com.abc.im.protof.MsgBean.BusinessCardMessage.Builder, com.abc.im.protof.MsgBean.BusinessCardMessageOrBuilder> businessCardBuilder_;
         /**
-         * <code>.BusinessCardMessage business_card = 10006;</code>
+         * <code>.BusinessCardMessage businessCard = 10006;</code>
          */
         public boolean hasBusinessCard() {
           return realMsgCase_ == 10006;
         }
         /**
-         * <code>.BusinessCardMessage business_card = 10006;</code>
+         * <code>.BusinessCardMessage businessCard = 10006;</code>
          */
         public com.abc.im.protof.MsgBean.BusinessCardMessage getBusinessCard() {
           if (businessCardBuilder_ == null) {
@@ -62421,7 +62421,7 @@ public final class MsgBean {
           }
         }
         /**
-         * <code>.BusinessCardMessage business_card = 10006;</code>
+         * <code>.BusinessCardMessage businessCard = 10006;</code>
          */
         public Builder setBusinessCard(com.abc.im.protof.MsgBean.BusinessCardMessage value) {
           if (businessCardBuilder_ == null) {
@@ -62437,7 +62437,7 @@ public final class MsgBean {
           return this;
         }
         /**
-         * <code>.BusinessCardMessage business_card = 10006;</code>
+         * <code>.BusinessCardMessage businessCard = 10006;</code>
          */
         public Builder setBusinessCard(
             com.abc.im.protof.MsgBean.BusinessCardMessage.Builder builderForValue) {
@@ -62451,7 +62451,7 @@ public final class MsgBean {
           return this;
         }
         /**
-         * <code>.BusinessCardMessage business_card = 10006;</code>
+         * <code>.BusinessCardMessage businessCard = 10006;</code>
          */
         public Builder mergeBusinessCard(com.abc.im.protof.MsgBean.BusinessCardMessage value) {
           if (businessCardBuilder_ == null) {
@@ -62473,7 +62473,7 @@ public final class MsgBean {
           return this;
         }
         /**
-         * <code>.BusinessCardMessage business_card = 10006;</code>
+         * <code>.BusinessCardMessage businessCard = 10006;</code>
          */
         public Builder clearBusinessCard() {
           if (businessCardBuilder_ == null) {
@@ -62492,13 +62492,13 @@ public final class MsgBean {
           return this;
         }
         /**
-         * <code>.BusinessCardMessage business_card = 10006;</code>
+         * <code>.BusinessCardMessage businessCard = 10006;</code>
          */
         public com.abc.im.protof.MsgBean.BusinessCardMessage.Builder getBusinessCardBuilder() {
           return getBusinessCardFieldBuilder().getBuilder();
         }
         /**
-         * <code>.BusinessCardMessage business_card = 10006;</code>
+         * <code>.BusinessCardMessage businessCard = 10006;</code>
          */
         public com.abc.im.protof.MsgBean.BusinessCardMessageOrBuilder getBusinessCardOrBuilder() {
           if ((realMsgCase_ == 10006) && (businessCardBuilder_ != null)) {
@@ -62511,7 +62511,7 @@ public final class MsgBean {
           }
         }
         /**
-         * <code>.BusinessCardMessage business_card = 10006;</code>
+         * <code>.BusinessCardMessage businessCard = 10006;</code>
          */
         private com.google.protobuf.SingleFieldBuilderV3<
             com.abc.im.protof.MsgBean.BusinessCardMessage, com.abc.im.protof.MsgBean.BusinessCardMessage.Builder, com.abc.im.protof.MsgBean.BusinessCardMessageOrBuilder> 
@@ -69582,7 +69582,7 @@ public final class MsgBean {
       "ceive_red_envelope\030\223N \001(\0132\032.ReceiveRedEn" +
       "velopeMessageH\000\022%\n\010transfer\030\224N \001(\0132\020.Tra" +
       "nsferMessageH\000\022\037\n\005stamp\030\225N \001(\0132\r.StampMe" +
-      "ssageH\000\022.\n\rbusiness_card\030\226N \001(\0132\024.Busine" +
+      "ssageH\000\022.\n\rbusinessCard\030\226N \001(\0132\024.Busine" +
       "ssCardMessageH\000\022\037\n\005voice\030\227N \001(\0132\r.VoiceM" +
       "essageH\000\022\031\n\002at\030\230N \001(\0132\n.AtMessageH\000\022\'\n\ta" +
       "ssistant\030\231N \001(\0132\021.AssistantMessageH\000\022!\n\006" +

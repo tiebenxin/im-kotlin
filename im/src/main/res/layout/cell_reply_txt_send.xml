@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:id="@+id/view_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
+    android:paddingLeft="@dimen/app_margin_main"
+    android:paddingTop="5dp"
+    android:paddingRight="@dimen/app_margin_main"
+    android:paddingBottom="5dp">
+
+
+    <TextView
+        android:id="@+id/tv_time"
+        style="@style/app_txt_content_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:textMessage="shijian" />
+
+
+    <LinearLayout
+        android:id="@+id/view_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_select"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:visibility="visible">
+
+            <CheckBox
+                android:id="@+id/ck_select"
+                style="@style/app_check_green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_toLeftOf="@+id/iv_avatar"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/app_txt_content_1"
+                android:layout_width="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="2dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textMessage="name" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_error"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:src="@mipmap/ic_net_err"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/view_read"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tv_read"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textMessage="已读"
+                        android:textColor="@color/gray_500"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_read_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray_500"
+                        android:textSize="9sp"
+                        tool:textMessage="12:20" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/view_bubble_root"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right">
+
+                    <LinearLayout
+                        android:id="@+id/view_bubble"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginBottom="4dp"
+                        android:background="@drawable/selector_chat_me_touch"
+                        android:gravity="left|center_vertical"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_ref_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="normal"
+                            android:gravity="center_vertical"
+                            android:maxWidth="210dp"
+                            android:selectAllOnFocus="true"
+                            android:textMessage=""
+                            android:textColor="@color/c_259048"
+                            android:textIsSelectable="false"
+                            android:textSize="13sp" />
+
+                        <net.cb.cb.library.view.EllipsizedTextView
+                            android:id="@+id/tv_ref_msg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp"
+                            android:ellipsize="end"
+                            android:fontFamily="normal"
+                            android:gravity="center_vertical"
+                            android:maxWidth="210dp"
+                            android:maxLines="2"
+                            android:selectAllOnFocus="true"
+                            android:textMessage=""
+                            android:textColor="@color/c_727272"
+                            android:textIsSelectable="false"
+                            android:textSize="11sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:background="@color/c_259048" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="normal"
+                            android:gravity="center_vertical"
+                            android:maxWidth="210dp"
+                            android:selectAllOnFocus="true"
+                            android:textMessage=""
+                            android:textColor="@color/black"
+                            android:textIsSelectable="false"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_bell"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|bottom"
+                        android:src="@mipmap/icon_st_1"
+                        android:visibility="visible" />
+
+                </FrameLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <net.cb.cb.library.view.CircleImageView
+            android:id="@+id/iv_avatar"
+            style="@style/app_img_head"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            app:radius="@dimen/head_portrait_fillet" />
+
+    </LinearLayout>
+</LinearLayout>

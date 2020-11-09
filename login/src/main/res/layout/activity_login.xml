@@ -41,7 +41,7 @@
                 style="@style/app_txt_title_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="密码" />
+                android:textMessage="密码" />
 
 
             <com.abc.core.widgt.BanedPasteEditText
@@ -82,7 +82,7 @@
                 style="@style/app_txt_title_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="IP" />
+                android:textMessage="IP" />
 
             <TextView
                 android:id="@+id/tv_ip"
@@ -91,7 +91,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="0.0.0.0" />
+                android:textMessage="0.0.0.0" />
 
             <TextView
                 android:id="@+id/tv_ip_name"
@@ -99,7 +99,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
                 android:gravity="right|center_vertical"
-                android:text="测试服" />
+                android:textMessage="测试服" />
 
 
             <Spinner
@@ -129,7 +129,7 @@
             android:layout_marginTop="8dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="使用短信验证码登录"
+            android:textMessage="使用短信验证码登录"
             android:textColor="@color/blue_600"
             android:textSize="11sp" />
 
@@ -140,7 +140,7 @@
             android:layout_width="310dp"
             android:layout_height="38dp"
             android:layout_marginTop="53dp"
-            android:text="登录" />
+            android:textMessage="登录" />
 
         <View
             android:layout_width="wrap_content"
@@ -161,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="21dp"
                 android:padding="5dp"
-                android:text="忘记密码"
+                android:textMessage="忘记密码"
                 android:textColor="@color/blue_600"
                 android:textSize="11sp" />
 
@@ -177,7 +177,7 @@
                 android:paddingTop="5dp"
                 android:paddingRight="15dp"
                 android:paddingBottom="5dp"
-                android:text="更多"
+                android:textMessage="更多"
                 android:textColor="@color/blue_600"
                 android:textSize="11sp" />
 

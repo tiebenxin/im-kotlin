@@ -1,2 +1,2 @@
-include ':app', ':core', ':im', ':login'
+include ':app', ':core', ':im', ':login', ':chat'
 rootProject.name='kim'

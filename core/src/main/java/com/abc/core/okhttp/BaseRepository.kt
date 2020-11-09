@@ -40,10 +40,10 @@ open class BaseRepository {
                     )
                 )
             } else {
-                if (response.code == 0L){
+                if (response.code == 0L) {
                     successBlock?.let { it() }
                     NetResult.Success(response.data!!)
-                }else{
+                } else {
                     errorBlock?.let { it() }
                     NetResult.Error(
                         ResultException(
@@ -57,7 +57,7 @@ open class BaseRepository {
         }
     }
 
-    public fun getRequestBody(map: Map<String, String>): RequestBody {
+    fun getRequestBody(map: Map<String, String>): RequestBody {
         return RequestBody.create(
             MediaType.parse("application/json; charset=utf-8"),
             mapToJSON(map)

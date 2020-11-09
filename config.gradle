@@ -9,11 +9,11 @@ ext {
             ANDROID_MIN_SDK_VERSION    : 22,
             ANDROID_TAGRET_SDK_VERSION : 28,
 
-            compileSdkVersion          : 28,
-            buildToolsVersion          : "26.0.2",
+            compileSdkVersion          : 29,
+            buildToolsVersion          : "29.0.3",
             applicationId              : "com.yanlong.im",
             minSdkVersion              : 22,
-            targetSdkVersion           : 28,
+            targetSdkVersion           : 29,
             "gradle"                   : "com.android.tools.build:gradle:" + gradle_version
     ]
 
