@@ -60,7 +60,7 @@
                 android:visibility="visible" />
         </LinearLayout>
 
-        <net.cb.cb.library.view.CircleImageView
+        <com.abc.core.widgt.CircleImageView
             android:id="@+id/iv_avatar"
             style="@style/app_img_head"
             android:layout_width="35dp"
@@ -114,7 +114,7 @@
                         android:textIsSelectable="false"
                         android:textSize="13sp" />
 
-                    <net.cb.cb.library.view.EllipsizedTextView
+                    <com.abc.core.widgt.EllipsizedTextView
                         android:id="@+id/tv_ref_msg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

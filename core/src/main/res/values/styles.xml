@@ -65,4 +65,18 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+
+    <style name="app_txt_content_1" parent="app_txt_base">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/gray_300</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="app_check_green" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/bg_check_green</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+
 </resources>

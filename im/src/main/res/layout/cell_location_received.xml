@@ -30,8 +30,8 @@
         android:gravity="center"
         android:padding="3dp"
         android:singleLine="false"
-        android:textMessage="----以下是新消息----"
         android:textColor="@color/gray_500"
+        android:textMessage="----以下是新消息----"
         android:textSize="12sp"
         android:visibility="gone" />
 
@@ -61,7 +61,7 @@
                 android:visibility="visible" />
         </LinearLayout>
 
-        <net.cb.cb.library.view.CircleImageView
+        <com.abc.core.widgt.CircleImageView
             android:id="@+id/iv_avatar"
             style="@style/app_img_head"
             android:layout_width="35dp"
@@ -120,14 +120,14 @@
                         <TextView
                             android:id="@+id/tv_location"
                             style="@style/app_txt_title_2"
-                            android:textMessage="湘江时代(长沙市岳麓区)"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/white"
+                            android:textMessage="湘江时代(长沙市岳麓区)" />
 
                         <TextView
                             android:id="@+id/tv_location_desc"
                             style="@style/app_txt_content_1"
-                            android:textMessage="长沙市岳麓区先导路"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/white"
+                            android:textMessage="长沙市岳麓区先导路" />
 
                     </LinearLayout>
 
@@ -143,8 +143,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|bottom"
-                    android:src="@mipmap/icon_st_1"
                     android:visibility="visible" />
+                <!--   android:src="@mipmap/icon_st_1"-->
 
             </FrameLayout>
 

@@ -30,8 +30,8 @@
         android:gravity="center"
         android:padding="3dp"
         android:singleLine="false"
-        android:textMessage="----以下是新消息----"
         android:textColor="@color/gray_500"
+        android:textMessage="----以下是新消息----"
         android:textSize="12sp"
         android:visibility="gone" />
 
@@ -58,7 +58,7 @@
                 android:visibility="visible" />
         </LinearLayout>
 
-        <net.cb.cb.library.view.CircleImageView
+        <com.abc.core.widgt.CircleImageView
             android:id="@+id/iv_avatar"
             style="@style/app_img_head"
             android:layout_width="35dp"
@@ -128,9 +128,9 @@
                                 android:gravity="center_vertical"
                                 android:maxWidth="210dp"
                                 android:selectAllOnFocus="true"
-                                android:textMessage="name"
                                 android:textColor="@color/c_259048"
                                 android:textIsSelectable="false"
+                                android:textMessage="name"
                                 android:textSize="13sp" />
 
                             <androidx.appcompat.widget.AppCompatTextView
@@ -142,9 +142,9 @@
                                 android:gravity="center_vertical"
                                 android:maxWidth="210dp"
                                 android:selectAllOnFocus="true"
-                                android:textMessage="图片"
                                 android:textColor="@color/c_727272"
                                 android:textIsSelectable="false"
+                                android:textMessage="图片"
                                 android:textSize="11sp" />
 
 
@@ -165,9 +165,9 @@
                         android:gravity="center_vertical"
                         android:maxWidth="210dp"
                         android:selectAllOnFocus="true"
-                        android:textMessage=""
                         android:textColor="@color/black"
                         android:textIsSelectable="false"
+                        android:textMessage=""
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -178,8 +178,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|bottom"
-                    android:src="@mipmap/icon_st_1"
                     android:visibility="visible" />
+
+                <!--  android:src="@mipmap/icon_st_1"-->
             </FrameLayout>
 
 

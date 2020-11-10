@@ -4,8 +4,8 @@
     android:id="@+id/view_parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
     android:paddingLeft="@dimen/app_margin_main"
     android:paddingTop="5dp"
     android:paddingRight="@dimen/app_margin_main"
@@ -92,16 +92,16 @@
                         android:id="@+id/tv_read"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textMessage="已读"
                         android:textColor="@color/gray_500"
+                        android:textMessage="已读"
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/tv_read_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textMessage="12:20"
                         android:textColor="@color/gray_500"
+                        android:textMessage="12:20"
                         android:textSize="9sp" />
                 </LinearLayout>
 
@@ -145,8 +145,8 @@
                                 android:layout_height="wrap_content"
                                 android:ellipsize="end"
                                 android:maxLines="2"
-                                android:textMessage="文件.txt"
                                 android:textColor="@color/c_353535"
+                                android:textMessage="文件.txt"
                                 android:textSize="15sp" />
 
                             <TextView
@@ -154,8 +154,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:textMessage="0K"
                                 android:textColor="@color/c_878787"
+                                android:textMessage="0K"
                                 android:textSize="12sp" />
 
                         </LinearLayout>
@@ -180,8 +180,8 @@
                                 android:layout_gravity="right"
                                 android:layout_marginTop="3dp"
                                 android:layout_marginRight="10dp"
-                                android:textMessage="电脑端文件"
                                 android:textColor="@color/c_32b053"
+                                android:textMessage="电脑端文件"
                                 android:textSize="11sp" />
                         </LinearLayout>
                     </RelativeLayout>
@@ -218,8 +218,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
-                        android:src="@mipmap/icon_st_1"
                         android:visibility="gone" />
+                    <!--   android:src="@mipmap/icon_st_1"-->
 
                 </FrameLayout>
             </LinearLayout>
@@ -227,7 +227,7 @@
 
         </LinearLayout>
 
-        <net.cb.cb.library.view.CircleImageView
+        <com.abc.core.widgt.CircleImageView
             android:id="@+id/iv_avatar"
             style="@style/app_img_head"
             android:layout_width="35dp"

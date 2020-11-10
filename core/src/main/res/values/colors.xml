@@ -5,11 +5,22 @@
     <color name="black_a_20">#40000000</color>
     <color name="transparent">#00000000</color>
 
+    <!-- 透明度 -->
+    <color name="transparent_33">#33000000</color>
+    <color name="transparent_80">#80000000</color>
+    <color name="transparent_cc">#cc000000</color>
+    <color name="transparent_ff">#ff000000</color>
+    <color name="transparent_b3">#B3000000</color>
+    <!--10%透明-->
+    <color name="transparent_0D">#0D000000</color>
+
     <!--    gray-->
     <color name="gray_100">#f1f1f1</color>
     <color name="gray_200">#dcdddd</color>
     <color name="gray_250">#B5B5B5</color>
     <color name="gray_300">#868686</color>
+    <color name="gray_400">#63666a</color>
+    <color name="gray_500">#6d6e72</color>
 
     <!--    blue-->
     <color name="blue_600">#374882</color>

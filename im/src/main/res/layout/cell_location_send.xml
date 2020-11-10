@@ -92,16 +92,16 @@
                         android:id="@+id/tv_read"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textMessage="已读"
                         android:textColor="@color/gray_500"
+                        android:textMessage="已读"
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/tv_read_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textMessage="12:20"
                         android:textColor="@color/gray_500"
+                        android:textMessage="12:20"
                         android:textSize="9sp" />
                 </LinearLayout>
 
@@ -142,14 +142,14 @@
                             <TextView
                                 android:id="@+id/tv_location"
                                 style="@style/app_txt_title_2"
-                                android:textMessage="湘江时代(长沙市岳麓区)"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/white"
+                                android:textMessage="湘江时代(长沙市岳麓区)" />
 
                             <TextView
                                 android:id="@+id/tv_location_desc"
                                 style="@style/app_txt_content_1"
-                                android:textMessage="长沙市岳麓区先导路"
-                                android:textColor="@color/white" />
+                                android:textColor="@color/white"
+                                android:textMessage="长沙市岳麓区先导路" />
 
                         </LinearLayout>
 
@@ -166,8 +166,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
-                        android:src="@mipmap/icon_st_1"
                         android:visibility="gone" />
+                    <!--                    android:src="@mipmap/icon_st_1"-->
 
                 </FrameLayout>
             </LinearLayout>
@@ -175,7 +175,7 @@
 
         </LinearLayout>
 
-        <net.cb.cb.library.view.CircleImageView
+        <com.abc.core.widgt.CircleImageView
             android:id="@+id/iv_avatar"
             style="@style/app_img_head"
             android:layout_width="35dp"

@@ -1,9 +1,9 @@
 package com.abc.im.socket
 
 import android.text.TextUtils
+import com.abc.im.bean.MsgAllBean
 import com.abc.im.protof.MsgBean
 
-import com.yanlong.im.chat.bean.MsgAllBean
 
 import java.util.HashMap
 import java.util.concurrent.ConcurrentHashMap
@@ -19,8 +19,9 @@ object SendList {
     private val SEND_RE_TIME = (3 * 1000).toLong()
 
     var SEND_LIST: MutableMap<String, SendListBean> = ConcurrentHashMap()
-//    var sendSequence: MutableMap<String, MsgAllBean>? = ConcurrentHashMap<String, MsgAllBean>()
+    private var sendSequence: MutableMap<String, MsgAllBean> = ConcurrentHashMap()
 
+    @JvmStatic
     fun findMsgById(keyId: String): MsgBean.UniversalMessage.Builder? {
         return if (SEND_LIST.containsKey(keyId)) {
             SEND_LIST[keyId]!!.msg
@@ -32,6 +33,7 @@ object SendList {
      * @param keyId
      * @param msg
      */
+    @JvmStatic
     fun addSendList(keyId: String, msg: MsgBean.UniversalMessage.Builder) {
 
 //        LogUtil.getLog().d(TAG, "添加发送队列rid:$keyId")
@@ -49,9 +51,9 @@ object SendList {
             sl.reSendNum = 1
             SEND_LIST[keyId] = sl
             //5.28 如果非在线发送,直接失败
-            if (!SocketUtil.getSocketUtil().getOnlineState()) {
-                removeSendList(keyId)
-            }
+//            if (!SocketUtil.getSocketUtil().onlineState) {
+//                removeSendList(keyId)
+//            }
         }
     }
 
@@ -60,6 +62,7 @@ object SendList {
      * @param keyId
      * @param msg
      */
+    @JvmStatic
     fun addSendList(keyId: String, msg: MsgBean.AckMessage.Builder?) {
         if (TextUtils.isEmpty(keyId) || msg == null) {
             return
@@ -79,9 +82,9 @@ object SendList {
             sl.reSendNum = 1
             SEND_LIST[keyId] = sl
             //5.28 如果非在线发送,直接失败
-            if (!SocketUtil.getSocketUtil().getOnlineState()) {
-                removeSendList(keyId)
-            }
+//            if (!SocketUtil.getSocketUtil().onlineState) {
+//                removeSendList(keyId)
+//            }
         }
     }
 
@@ -97,7 +100,7 @@ object SendList {
                 return
 //            LogUtil.getLog().e(TAG, "SocketUtil$移除队列[返回失败]$keyId")
             if (SEND_LIST[keyId]!!.msg != null) {
-                SocketUtil.getSocketUtil().getEvent().onSendMsgFailure(SEND_LIST[keyId]!!.msg)
+//                SocketUtil.getSocketUtil().getEvent().onSendMsgFailure(SEND_LIST[keyId]!!.msg)
             }
             //        else{
             //            if(SEND_LIST.get(keyId).getMsgAck()!=null){
@@ -115,6 +118,7 @@ object SendList {
      * 仅移除消息列队
      * @param keyId
      */
+    @JvmStatic
     fun removeSendListJust(keyId: String) {
         if (!SEND_LIST.containsKey(keyId))
             return
@@ -139,20 +143,15 @@ object SendList {
                 if (now > bean.firstTimeSent + bean.reSendNum * SEND_RE_TIME) {
 //                    LogUtil.getLog().e(TAG, ">>>>符合发送条件$kid")
                     if (bean.msg != null) {
-                        SocketUtil.getSocketUtil().sendData4Msg(bean.msg)
+//                        SocketUtil.getSocketUtil().sendData4Msg(bean.msg!!)
                     } else {
 //                        LogUtil.writeLog(
 //                            ">>>重新发送回执 RequestId:" + bean.msgAck.getRequestId() +
 //                                    " MsgId:" + bean.msgAck.getMsgIdList() + " MsgIdCount:" + bean.msgAck.getMsgIdCount()
-                        )
+//                        )
                         // 添加到消息队中监听
-                        addSendList(bean.msgAck.getRequestId(), bean.msgAck)
-                        SocketUtil.getSocketUtil().sendData(
-                            SocketPacket.getPackage(
-                                SocketPacket.DataType.ACK,
-                                bean.msgAck.build().toByteArray()
-                            ), null, bean.msgAck.getRequestId()
-                        )
+                        addSendList(bean.msgAck!!.requestId, bean.msgAck)
+//                        SocketUtil.getSocketUtil().sendData(SocketPacket.getPackage(SocketPacket.DataType.ACK, bean.msgAck!!.build().toByteArray()), null, bean.msgAck!!.requestI)
                     }
                 } else {
 //                    LogUtil.getLog().e(TAG, ">>>>符合重发条件但时间不满足$kid")
@@ -214,8 +213,5 @@ object SendList {
         }
     }
 
-    fun getSendSequence(): Map<String, MsgAllBean>? {
-        return sendSequence
-    }
 
 }

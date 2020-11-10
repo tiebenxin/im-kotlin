@@ -96,8 +96,8 @@
                         android:id="@+id/tv_read"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textMessage="已读"
                         android:textColor="@color/gray_500"
+                        android:textMessage="已读"
                         android:textSize="12sp" />
 
                     <TextView
@@ -139,9 +139,9 @@
                             android:gravity="center_vertical"
                             android:maxWidth="180dp"
                             android:selectAllOnFocus="true"
-                            android:textMessage=""
                             android:textColor="@color/black"
                             android:textIsSelectable="false"
+                            android:textMessage=""
                             android:textSize="15sp" />
 
                     </LinearLayout>
@@ -151,8 +151,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
-                        android:src="@mipmap/icon_st_1"
                         android:visibility="visible" />
+                    <!--        android:src="@mipmap/icon_st_1"-->
 
                 </FrameLayout>
             </LinearLayout>
@@ -160,7 +160,7 @@
 
         </LinearLayout>
 
-        <net.cb.cb.library.view.CircleImageView
+        <com.abc.core.widgt.CircleImageView
             android:id="@+id/iv_avatar"
             style="@style/app_img_head"
             android:layout_width="35dp"

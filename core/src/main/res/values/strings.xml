@@ -8,5 +8,7 @@
     <string name="common_error_request">请求错误</string>
     <string name="common_error_server">服务器错误</string>
     <string name="common_error_server_body_null">服务器错误:body为空</string>
+    <string name="forward_success">发送成功</string>
+
 
 </resources>

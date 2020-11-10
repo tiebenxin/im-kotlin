@@ -1,62 +1,62 @@
 package com.abc.im.socket
 
-import java.util.ArrayList
+import java.util.*
 
 /***
- * v1 协议的定义
+ * V2协议的定义
  */
-object SocketPact {
+object SocketPacket {
     //包头2位
-    private val P_HEAD = byteArrayOf(0x20, 0x19)
+    private val P_HEAD = byteArrayOf(0x20, 0x20)
+
+    val P_HEART = byteArrayOf(0x7F)
     //长度2位
     //   private byte[] p_length = new byte[2];
     //校验位4位(未使用)
-    private val P_CHECK = ByteArray(4)
-    //版本2位,第一字节为大版本,第二位小版本
-    private val P_VERSION = byteArrayOf(0x01, 0x00)
+    //    private static byte[] P_CHECK = new byte[4];
+    //版本2位,第一字节为大版本,第二位小版本,1.1
+    private val P_VERSION = byteArrayOf(0x01, 0x01)
     //类型2位
     private val P_TYPE = ByteArray(2)
 
 
     //数据类型枚举
     enum class DataType {
-        PROTOBUF_MSG, PROTOBUF_HEARTBEAT, AUTH, ACK, OTHER
+        PROTOBUF_MSG, PROTOBUF_HEARTBEAT, AUTH, ACK, REQUEST_MSG, OTHER
     }
 
-    fun getPakage(type: DataType, context: ByteArray?): ByteArray {
-
+    fun getPackage(type: DataType, context: ByteArray?): ByteArray {
         //内容长度
         val contextSize = context?.size ?: 0
-
         //长度后面的包长
-        val d_length = intToByte2(P_CHECK.size + P_VERSION.size + P_TYPE.size + contextSize)
+        val d_length = int2Byte(P_TYPE.size + contextSize)
 
         //类型
-        var d_type = ByteArray(2)
+        var d_option = ByteArray(2)
 
         when (type) {
-            DataType.PROTOBUF_MSG//普通消息
-            -> d_type = byteArrayOf(0x00, toByte(1, 0))
-            DataType.PROTOBUF_HEARTBEAT//心跳
-            -> d_type = byteArrayOf(0x00, toByte(1, 1))
-            DataType.AUTH//鉴权
-            -> d_type = byteArrayOf(0x00, toByte(1, 2))
-            DataType.ACK//回馈
-            -> d_type = byteArrayOf(0x00, toByte(1, 3))
+            SocketPacket.DataType.PROTOBUF_MSG//普通消息
+            -> d_option = byteArrayOf(0x00, toByte(1, 0))
+            SocketPacket.DataType.PROTOBUF_HEARTBEAT//心跳
+            -> d_option = byteArrayOf(0x00, toByte(0, 1))
+            SocketPacket.DataType.AUTH//鉴权
+            -> d_option = byteArrayOf(0x00, toByte(1, 2))
+            SocketPacket.DataType.ACK//回馈
+            -> d_option = byteArrayOf(0x00, toByte(1, 3))
+            SocketPacket.DataType.REQUEST_MSG//请求数据包
+            -> d_option = byteArrayOf(0x00, toByte(1, 4))
         }
 
         //包大小
-        val d_size =
-            P_HEAD.size + d_length.size + P_CHECK.size + P_VERSION.size + d_type.size + contextSize
+        val d_size = P_HEAD.size + P_VERSION.size + d_length.size + d_option.size + contextSize
 
         val rtData = ByteArray(d_size)
         System.arraycopy(P_HEAD, 0, rtData, 0, 2)
-        System.arraycopy(d_length, 0, rtData, 2, 2)
-        System.arraycopy(P_CHECK, 0, rtData, 4, 4)
-        System.arraycopy(P_VERSION, 0, rtData, 8, 2)
-        System.arraycopy(d_type, 0, rtData, 10, 2)
+        System.arraycopy(P_VERSION, 0, rtData, 2, 2)
+        System.arraycopy(d_length, 0, rtData, 4, 4)
+        System.arraycopy(d_option, 0, rtData, 8, 2)
         if (context != null) {
-            System.arraycopy(context, 0, rtData, 12, contextSize)
+            System.arraycopy(context, 0, rtData, 10, contextSize)
         }
 
 
@@ -83,39 +83,50 @@ object SocketPact {
      * @return
      */
     fun getLength(data: ByteArray): Int {
-        val d = ByteArray(2)
-        d[0] = data[2]
-        d[1] = data[3]
-
-        return byte2ToInt(d)
+        val d = ByteArray(4)
+        d[0] = data[4]
+        d[1] = data[5]
+        d[2] = data[6]
+        d[3] = data[7]
+        return byte2Int(d)
     }
 
     /***
-     * 获取消息类型
+     * 获取消息类型，option  高位表示传输数据类型，地位 表示option类型
      * @return
      */
     fun getType(data: ByteArray): DataType {
-        if (data.size >= 12) {
+        if (data.size >= 10) {
             val d = ByteArray(2)
-            d[0] = data[10]//暂时不用
-            d[1] = data[11]
+            d[0] = data[8]//暂时不用
+            d[1] = data[9]
 
             val h = byteH4(d[1])
             val l = byteL4(d[1])
-
-            if (h == 1 && l == 0) {
+            //TODO:没必要判断高位，因为没必要知道数据解析类型
+            if (l == 0) {
                 return DataType.PROTOBUF_MSG
-            } else if (h == 1 && l == 1) {
-
+            } else if (l == 1) {
                 return DataType.PROTOBUF_HEARTBEAT
-            } else if (h == 1 && l == 3) {
+            } else if (l == 3) {
                 return DataType.ACK
-            } else if (h == 1 && l == 2) {
+            } else if (l == 2) {
                 return DataType.AUTH
+            } else if (l == 4) {
+                return DataType.REQUEST_MSG
             }
+            //            if (h == 1 && l == 0) {
+            //                return DataType.PROTOBUF_MSG;
+            //            } else if (h == 0 && l == 1) {
+            //                return DataType.PROTOBUF_HEARTBEAT;
+            //            } else if (h == 1 && l == 3) {
+            //                return DataType.ACK;
+            //            } else if (h == 1 && l == 2) {
+            //                return DataType.AUTH;
+            //            } else if (h == 1 && l == 4) {
+            //                return DataType.REQUEST_MSG;
+            //            }
         }
-
-
         return DataType.OTHER
 
 
@@ -188,27 +199,33 @@ object SocketPact {
         return all_byte
     }
 
-
-    /***
-     * int转为2byte
-     * @param val
+    /**
+     * 将int型的数据转换成byte数组，四个字节
+     *
+     * @param intValue
      * @return
      */
-    private fun intToByte2(value: Int): ByteArray {
-        val data = ByteArray(2)
-        data[0] = (value shr 8 and 0xff).toByte()
-        data[1] = (value and 0xff).toByte()
-        return data
+    fun int2Byte(intValue: Int): ByteArray {
+        val b = ByteArray(4)
+        for (i in 0..3) {
+            b[i] = (intValue shr 8 * (3 - i) and 0xFF).toByte()
+        }
+        return b
     }
 
-    /***
-     * 2byt转为int,读取长度
-     * @param data
+    /**
+     * 将byte数组转换成int型，4个字节的数组
+     *
+     * @param b
      * @return
      */
-    private fun byte2ToInt(data: ByteArray): Int {
-        return data[0].toInt() shl 8 and 0x0000ff00 or (data[1].toInt() and 0x000000ff)
-
+    fun byte2Int(b: ByteArray): Int {
+        var intValue = 0
+        val tempValue = 0xFF
+        for (i in b.indices) {
+            intValue += b[i].toInt() and tempValue shl 8 * (3 - i)
+        }
+        return intValue
     }
 
 
@@ -223,12 +240,12 @@ object SocketPact {
     }
 
     //高4位
-    private fun byteH4(bt: Byte): Int {
+    fun byteH4(bt: Byte): Int {
         return bt.toInt() and 0xf0 shr 4
     }
 
     //低4位
-    private fun byteL4(bt: Byte): Int {
+    fun byteL4(bt: Byte): Int {
         return bt.toInt() and 0x0f
     }
 

@@ -30,8 +30,8 @@
         android:gravity="center"
         android:padding="3dp"
         android:singleLine="false"
-        android:textMessage="----以下是新消息----"
         android:textColor="@color/gray_500"
+        android:textMessage="----以下是新消息----"
         android:textSize="12sp"
         android:visibility="gone" />
 
@@ -61,7 +61,7 @@
                 android:visibility="visible" />
         </LinearLayout>
 
-        <net.cb.cb.library.view.CircleImageView
+        <com.abc.core.widgt.CircleImageView
             android:id="@+id/iv_avatar"
             style="@style/app_img_head"
             android:layout_width="35dp"
@@ -108,7 +108,7 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp">
 
-                        <net.cb.cb.library.view.CircleImageView
+                        <com.abc.core.widgt.CircleImageView
                             android:id="@+id/iv_avatar_card"
                             style="@style/app_img_head"
                             android:layout_width="50dp"
@@ -158,8 +158,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|bottom"
-                    android:src="@mipmap/icon_st_1"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
+                <!--                          android:src="@mipmap/icon_st_1"-->
 
             </FrameLayout>
 
