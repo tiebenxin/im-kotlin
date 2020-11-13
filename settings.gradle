@@ -1,2 +1,3 @@
 include ':app', ':core', ':im', ':login', ':chat'
 rootProject.name='kim'
+includeBuild("VersionPlugin")

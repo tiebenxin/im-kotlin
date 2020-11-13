@@ -3,7 +3,7 @@ package com.abc.login.ui
 import android.text.InputType
 import android.view.View
 import android.widget.ImageView
-import com.abc.core.base.BaseActivity
+import com.abc.core.base.BaseVMActivity
 import com.abc.core.utils.DeviceUtils
 import com.abc.login.R
 import com.abc.login.databinding.ActivityLoginBinding
@@ -15,7 +15,7 @@ import kotlin.Int as Int1
  *@date 2020/10/14
  *Description
  */
-class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
+class LoginActivity : BaseVMActivity<LoginViewModel, ActivityLoginBinding>() {
     override fun initData() {
     }
 

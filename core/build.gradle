@@ -1,15 +1,25 @@
+import com.abc.plugin.*
+plugins {
+    // 这个 id 就是在 versionPlugin 文件夹下 build.gradle 文件内定义的id
+    id 'com.abc.plugin'
+}
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
-    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
-    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    compileSdkVersion BuildConfig.compileSdkVersion
+    buildToolsVersion  BuildConfig.buildToolsVersion
+//    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+//    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
 
 
     defaultConfig {
-        minSdkVersion rootProject.ext.android["minSdkVersion"]
-        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+//        minSdkVersion rootProject.ext.android["minSdkVersion"]
+//        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        minSdkVersion BuildConfig.minSdkVersion
+        targetSdkVersion BuildConfig.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -50,6 +60,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation AndroidX.appcompat
+    implementation AndroidX.coreKtx
+    implementation AndroidX.constraintlayout
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.core:core-ktx:1.0.2'
     testImplementation 'junit:junit:4.12'
@@ -77,7 +91,10 @@ dependencies {
     api group: 'androidx.lifecycle', name: 'lifecycle-livedata', version: "$rootProject.ext.lifecycle"
     api group: 'androidx.lifecycle', name: 'lifecycle-viewmodel-ktx', version: "$rootProject.ext.lifecycle"
     api group: 'androidx.lifecycle', name: 'lifecycle-extensions', version: "$rootProject.ext.lifecycle"
+
     api 'androidx.cardview:cardview:1.0.0'
+    api 'com.google.android.material:material:1.0.0'
+
 
     //mmkv key-value 存储
     api 'com.tencent:mmkv:1.0.22'
@@ -97,5 +114,8 @@ dependencies {
     api 'org.greenrobot:eventbus:3.0.0'
 
     api 'me.jessyan:retrofit-url-manager:1.4.0'
+
+    //ali 路由
+    api 'com.alibaba:arouter-api:1.5.0'
 
 }

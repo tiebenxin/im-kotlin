@@ -1,3 +1,9 @@
+import com.abc.plugin.*
+
+plugins {
+    // 这个 id 就是在 versionPlugin 文件夹下 build.gradle 文件内定义的 id
+    id "com.abc.plugin"
+}
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
@@ -5,15 +11,25 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
-    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    compileSdkVersion BuildConfig.compileSdkVersion
+    buildToolsVersion BuildConfig.buildToolsVersion
+//    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+//    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
     defaultConfig {
         applicationId "com.abc.kim"
-        minSdkVersion rootProject.ext.android["minSdkVersion"]
-        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+//        minSdkVersion rootProject.ext.android["minSdkVersion"]
+//        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        minSdkVersion BuildConfig.minSdkVersion
+        targetSdkVersion BuildConfig.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -30,16 +46,25 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation rootProject.ext.dependencies["androidx_appcompat"]
-    implementation 'androidx.core:core-ktx:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation AndroidX.appcompat
+    implementation Kt.stdlibJdk8
+
+//    implementation rootProject.ext.dependencies["androidx_appcompat"]
+//    implementation 'androidx.core:core-ktx:1.0.2'
+//    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    testImplementation Depend.junit
+    androidTestImplementation Depend.androidTestJunit
+    androidTestImplementation Depend.espressoCore
+
     implementation project(':core')
     implementation project(':login')
-
     implementation project(':chat')
+
+    //导入注解处理器
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 
 }
