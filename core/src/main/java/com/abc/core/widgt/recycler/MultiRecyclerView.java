@@ -11,12 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
-import net.cb.cb.library.R;
-import net.cb.cb.library.utils.LogUtil;
-import net.cb.cb.library.view.LoadView;
-import net.cb.cb.library.view.MaterialDrawable;
-import net.cb.cb.library.view.NewPullRefreshLayout;
-import net.cb.cb.library.view.YLLinearLayoutManager;
+import com.abc.core.R;
+import com.abc.core.utils.LogUtil;
 
 /**
  * @author Liszt
@@ -104,7 +100,7 @@ public class MultiRecyclerView extends LinearLayout {
         if (layoutManager == null || mAdapter == null) {
             return;
         }
-        LogUtil.getLog().i("scroll", "scrollToEnd");
+        LogUtil.Companion.getLog().i("scroll", "scrollToEnd");
         layoutManager.scrollToPositionWithOffset(mAdapter.getItemCount() - 1, Integer.MIN_VALUE);
     }
 

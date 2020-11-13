@@ -58,6 +58,8 @@ abstract class BaseVMActivity<T : ViewModel, M : ViewDataBinding> : BaseActivity
 
     abstract fun initView()
 
+    abstract fun initObserveViewModel()
+
     abstract fun getLayoutResId(): Int
 
 
@@ -70,6 +72,7 @@ abstract class BaseVMActivity<T : ViewModel, M : ViewDataBinding> : BaseActivity
         StatusBarKt.fitSystemBar(this)
         mViewBinding = DataBindingUtil.setContentView(this, getLayoutResId())
         initViewModel()
+        initObserveViewModel()
         initData()
         initView()
         //注册关闭其他页面事件

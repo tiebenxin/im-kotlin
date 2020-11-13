@@ -3,10 +3,13 @@ package com.abc.login.ui
 import android.text.InputType
 import android.view.View
 import android.widget.ImageView
+import androidx.lifecycle.Observer
 import com.abc.core.base.BaseVMActivity
 import com.abc.core.utils.DeviceUtils
+import com.abc.core.utils.ToastUtil
 import com.abc.login.R
 import com.abc.login.databinding.ActivityLoginBinding
+import com.alibaba.android.arouter.launcher.ARouter
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlin.Int as Int1
 
@@ -16,24 +19,26 @@ import kotlin.Int as Int1
  *Description
  */
 class LoginActivity : BaseVMActivity<LoginViewModel, ActivityLoginBinding>() {
+    override fun initObserveViewModel() {
+        mViewModel.loginResult.observe(this, Observer { b ->
+            if (b) {
+                ARouter.getInstance().build("/app/MainActivity").navigation()
+            } else {
+                ToastUtil.show("登录失败")
+            }
+        })
+    }
+
     override fun initData() {
     }
 
     override fun initView() {
-
         mViewBinding.btnLogin.setOnClickListener { login() }
     }
 
-//    override fun getLayoutResId(): Int {
-//        return R.layout.activity_login
-//    }
 
     override fun getLayoutResId(): Int1 = R.layout.activity_login
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_login)
-//    }
 
     fun login() {
         var phone = "15377311916"

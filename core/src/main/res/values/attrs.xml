@@ -20,7 +20,7 @@
     </declare-styleable>
 
 
-    <declare-styleable name="refresh_PullRefreshLayout">
+    <declare-styleable name="NewPullRefreshLayout">
         <attr name="refreshType" format="enum">
             <enum name="material" value="0" />
             <enum name="circles" value="1" />
