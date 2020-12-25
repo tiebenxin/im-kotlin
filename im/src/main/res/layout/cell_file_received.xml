@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:textMessage="" />
+        android:text="" />
 
     <TextView
         android:id="@+id/tv_broadcast"
@@ -31,7 +31,7 @@
         android:padding="3dp"
         android:singleLine="false"
         android:textColor="@color/gray_500"
-        android:textMessage="----以下是新消息----"
+        android:text="----以下是新消息----"
         android:textSize="12sp"
         android:visibility="gone" />
 
@@ -82,7 +82,7 @@
                 android:gravity="left"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:textMessage="name" />
+                android:text="name" />
 
             <FrameLayout
                 android:id="@+id/view_bubble_root"
@@ -107,7 +107,8 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="3dp"
                         android:layout_marginRight="10dp"
-                        android:src="@mipmap/ic_unknow" />
+                       />
+<!--                     android:src="@mipmap/ic_unknow" -->
 
                     <LinearLayout
                         android:id="@+id/layout_content"
@@ -125,7 +126,7 @@
                             android:ellipsize="end"
                             android:maxLines="2"
                             android:textColor="@color/c_353535"
-                            android:textMessage="文件.txt"
+                            android:text="文件.txt"
                             android:textSize="15sp" />
 
                         <TextView
@@ -134,7 +135,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:textColor="@color/c_878787"
-                            android:textMessage="0K"
+                            android:text="0K"
                             android:textSize="12sp" />
 
                     </LinearLayout>
@@ -160,7 +161,7 @@
                             android:layout_marginTop="3dp"
                             android:layout_marginRight="10dp"
                             android:textColor="@color/c_32b053"
-                            android:textMessage="电脑端文件"
+                            android:text="电脑端文件"
                             android:textSize="11sp" />
                     </LinearLayout>
 

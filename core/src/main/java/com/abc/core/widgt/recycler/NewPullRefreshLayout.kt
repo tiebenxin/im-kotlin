@@ -44,7 +44,7 @@ class NewPullRefreshLayout @JvmOverloads constructor(
     private lateinit var mRefreshView: ImageView
     private val mDecelerateInterpolator: Interpolator
     private val mTouchSlop: Int
-    private var finalOffset by Delegates.notNull<Int>()
+    var finalOffset by Delegates.notNull<Int>()
     private var mTotalDragDistance: Int = 0
     private var mRefreshDrawable: RefreshDrawable? = null
     private var mCurrentOffsetTop: Int = 0

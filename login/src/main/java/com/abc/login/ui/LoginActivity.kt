@@ -43,7 +43,7 @@ class LoginActivity : BaseVMActivity<LoginViewModel, ActivityLoginBinding>() {
     fun login() {
         var phone = "15377311916"
 //        var psw = et_password_content.text.toString()
-        var psw = "123456"
+        var psw = "111111"
         mViewModel.login(
             psw,
             phone,

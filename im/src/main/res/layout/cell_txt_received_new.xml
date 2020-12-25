@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:textMessage="2019" />
+        android:text="2019" />
 
     <TextView
         android:id="@+id/tv_broadcast"
@@ -31,7 +31,7 @@
         android:padding="3dp"
         android:singleLine="false"
         android:textColor="@color/gray_500"
-        android:textMessage="----以下是新消息----"
+        android:text="----以下是新消息----"
         android:textSize="12sp"
         android:visibility="gone" />
 
@@ -84,7 +84,7 @@
                 android:gravity="left"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:textMessage="name" />
+                android:text="name" />
 
             <FrameLayout
                 android:id="@+id/view_bubble_root"
@@ -109,7 +109,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:textColor="@color/color_353"
-                        android:textMessage="系统通知"
+                        android:text="系统通知"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -119,7 +119,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:textColor="@color/gray_808"
-                        android:textMessage="2020-09-10 12:12"
+                        android:text="2020-09-10 12:12"
                         android:textSize="11sp"
                         android:visibility="gone" />
 
@@ -142,7 +142,7 @@
                         android:selectAllOnFocus="true"
                         android:textColor="@color/black"
                         android:textIsSelectable="false"
-                        android:textMessage=""
+                        android:text=""
                         android:textSize="13sp"
                         android:visibility="visible" />
 
@@ -154,7 +154,7 @@
                         android:layout_marginTop="18dp"
                         android:layout_marginRight="10dp"
                         android:textColor="@color/color_353"
-                        android:textMessage="常信运营团队"
+                        android:text="常信运营团队"
                         android:textSize="13sp"
                         android:textStyle="bold" />
 
@@ -166,7 +166,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="10dp"
                         android:textColor="@color/gray_808"
-                        android:textMessage=""
+                        android:text=""
                         android:textSize="11sp" />
                 </LinearLayout>
             </FrameLayout>

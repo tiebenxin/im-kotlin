@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:textMessage="" />
+        android:text="" />
 
 
     <LinearLayout
@@ -64,7 +64,7 @@
                 android:gravity="right"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:textMessage="" />
+                android:text="" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
                         android:id="@+id/tv_read"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textMessage="已读"
+                        android:text="已读"
                         android:textColor="@color/gray_500"
                         android:textSize="12sp" />
 
@@ -103,7 +103,7 @@
                         android:id="@+id/tv_read_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textMessage="12:20"
+                        android:text="12:20"
                         android:textColor="@color/gray_500"
                         android:textSize="9sp" />
                 </LinearLayout>
@@ -147,13 +147,13 @@
                                 <TextView
                                     android:id="@+id/tv_title"
                                     style="@style/app_txt_title_2"
-                                    android:textMessage="标题" />
+                                    android:text="标题" />
 
                                 <TextView
                                     android:id="@+id/tv_info"
                                     style="@style/app_txt_content_1"
                                     android:layout_marginTop="5dp"
-                                    android:textMessage="内容" />
+                                    android:text="内容" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -171,7 +171,7 @@
                                 style="@style/app_txt_content_1"
                                 android:layout_width="wrap_content"
                                 android:layout_weight="1"
-                                android:textMessage="个人名片" />
+                                android:text="个人名片" />
 
                         </LinearLayout>
 
@@ -182,7 +182,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
-                        android:src="@mipmap/icon_st_1"
+                        android:src="@mipmap/ic_edt_del"
                         android:visibility="gone" />
 
                 </FrameLayout>

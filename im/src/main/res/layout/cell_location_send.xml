@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:textMessage="" />
+        android:text="" />
 
 
     <LinearLayout
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginBottom="2dp"
                 android:gravity="right"
-                android:textMessage="name" />
+                android:text="name" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/gray_500"
-                        android:textMessage="已读"
+                        android:text="已读"
                         android:textSize="12sp" />
 
                     <TextView
@@ -101,7 +101,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/gray_500"
-                        android:textMessage="12:20"
+                        android:text="12:20"
                         android:textSize="9sp" />
                 </LinearLayout>
 
@@ -143,13 +143,13 @@
                                 android:id="@+id/tv_location"
                                 style="@style/app_txt_title_2"
                                 android:textColor="@color/white"
-                                android:textMessage="湘江时代(长沙市岳麓区)" />
+                                android:text="湘江时代(长沙市岳麓区)" />
 
                             <TextView
                                 android:id="@+id/tv_location_desc"
                                 style="@style/app_txt_content_1"
                                 android:textColor="@color/white"
-                                android:textMessage="长沙市岳麓区先导路" />
+                                android:text="长沙市岳麓区先导路" />
 
                         </LinearLayout>
 

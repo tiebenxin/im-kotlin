@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:textMessage="shijian" />
+        android:text="shijian" />
 
 
     <LinearLayout
@@ -67,7 +67,7 @@
                 android:layout_marginBottom="2dp"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:textMessage="name" />
+                android:text="name" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -99,7 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/gray_500"
-                        android:textMessage="已读"
+                        android:text="已读"
                         android:textSize="12sp" />
 
                     <TextView
@@ -138,7 +138,7 @@
                             android:selectAllOnFocus="true"
                             android:textColor="@color/c_259048"
                             android:textIsSelectable="false"
-                            android:textMessage=""
+                            android:text=""
                             android:textSize="13sp" />
 
                         <com.abc.core.widgt.EllipsizedTextView
@@ -155,7 +155,7 @@
                             android:selectAllOnFocus="true"
                             android:textColor="@color/c_727272"
                             android:textIsSelectable="false"
-                            android:textMessage=""
+                            android:text=""
                             android:textSize="11sp" />
 
                         <View
@@ -174,7 +174,7 @@
                             android:selectAllOnFocus="true"
                             android:textColor="@color/black"
                             android:textIsSelectable="false"
-                            android:textMessage=""
+                            android:text=""
                             android:textSize="15sp" />
 
                     </LinearLayout>

@@ -57,6 +57,7 @@ object AppHostUtil {
                 }
             }
         }
+        connectHostApi = BuildConfig.HOST_RELEASE
         if (isEmpty) {
             throw NullPointerException("请检查config.gradle#host配置")
         }

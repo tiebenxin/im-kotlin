@@ -13,6 +13,6 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textColor="@color/white"
-        android:textMessage="WELLCOME" />
+        android:text="WELLCOME" />
 
 </LinearLayout>

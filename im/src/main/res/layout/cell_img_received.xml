@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:textMessage="" />
+        android:text="" />
 
     <TextView
         android:id="@+id/tv_broadcast"
@@ -32,7 +32,7 @@
         android:padding="3dp"
         android:singleLine="false"
         android:textColor="@color/gray_500"
-        android:textMessage="----以下是新消息----"
+        android:text="----以下是新消息----"
         android:textSize="12sp"
         android:visibility="gone" />
 
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_gravity="left"
                 android:layout_marginBottom="2dp"
-                android:textMessage="name" />
+                android:text="name" />
 
 
             <FrameLayout
@@ -103,7 +103,7 @@
                         android:id="@+id/card_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:cardBackgroundColor="@color/c_dadbdd"
+                        app:cardBackgroundColor="@color/c_dcdddd"
                         app:cardCornerRadius="4dp"
                         app:cardElevation="0dp">
 
@@ -139,7 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/white"
-                            android:textMessage="0%" />
+                            android:text="0%" />
                     </LinearLayout>
 
                 </FrameLayout>
@@ -171,7 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/gray_500"
-                android:textMessage="已读"
+                android:text="已读"
                 android:textSize="12sp" />
 
             <TextView

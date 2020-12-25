@@ -27,7 +27,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.abc.core.widgt.recycler.SuperSwipeRefreshLayout.CircleProgressView.Companion.PEROID
+import kotlin.properties.Delegates
 
 /**
  * @Author Zheng Haibo
@@ -46,7 +46,7 @@ import com.abc.core.widgt.recycler.SuperSwipeRefreshLayout.CircleProgressView.Co
  */
 @SuppressLint("ClickableViewAccessibility")
 class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : ViewGroup(context, attrs) {
-
+    private val LOG_TAG=javaClass::class.java.simpleName
     // SuperSwipeRefreshLayout内的目标View，比如RecyclerView,ListView,ScrollView,GridView
     // etc.
     private var mTarget: View? = null
@@ -56,7 +56,7 @@ class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : ViewGrou
 
     private var mRefreshing = false
     private var mLoadMore = false
-    private lateinit var mTouchSlop: Int
+    private var mTouchSlop by Delegates.notNull<Int>()
     private var mTotalDragDistance = -1f
     private val mMediumAnimationDuration: Int
     private var mCurrentTargetOffsetTop: Int = 0
@@ -88,7 +88,7 @@ class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : ViewGrou
     private var mScaleDownToStartAnimation: Animation? = null
 
     // 最后停顿时的偏移量px，与DEFAULT_CIRCLE_TARGET正比
-    private val mSpinnerFinalOffset: Float
+    private var mSpinnerFinalOffset: Float=0f
 
     private var mNotify: Boolean = false
 
@@ -284,12 +284,8 @@ class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : ViewGrou
         public override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
             var targetTop = 0
             var endTarget = 0
-            if (!mUsingCustomStart) {
-                endTarget = (mSpinnerFinalOffset - Math
-                    .abs(mOriginalOffsetTop)).toInt()
-            } else {
-                endTarget = mSpinnerFinalOffset.toInt()
-            }
+            endTarget = (this@SuperSwipeRefreshLayout.mSpinnerFinalOffset - Math
+                .abs(mOriginalOffsetTop)).toInt()
             targetTop = mFrom + ((endTarget - mFrom) * interpolatedTime).toInt()
             val offset = targetTop - mHeadViewContainer!!.top
             setTargetOffsetTopAndBottom(offset, false /* requires update */)
@@ -588,7 +584,7 @@ class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : ViewGrou
         val childTop = paddingTop + distance - pushDistance// 根据偏移量distance更新
         val childWidth = width - paddingLeft - paddingRight
         val childHeight = height - paddingTop - paddingBottom
-        Log.d(LOG_TAG, "debug:onLayout childHeight = $childHeight")
+        Log.d("hh", "debug:onLayout childHeight = $childHeight")
         child!!.layout(
             childLeft,
             childTop,
@@ -1318,8 +1314,8 @@ class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : ViewGrou
     inner class CircleProgressView : View, Runnable {
         private var progressPaint: Paint? = null
         private var bgPaint: Paint? = null
-        private var width: Int = 0// view的高度
-        private var height: Int = 0// view的宽度
+        private var w: Int = 0// view的高度
+        private var h = 0// view的宽度
 
         private var isOnDraw = false
         var isRunning = false
@@ -1345,47 +1341,49 @@ class SuperSwipeRefreshLayout(context: Context, attrs: AttributeSet?) : ViewGrou
 
         override fun onDraw(canvas: Canvas) {
             super.onDraw(canvas)
-            canvas.drawArc(getBgRect(), 0f, 360f, false, createBgPaint())
+            createBgPaint()?.let { canvas.drawArc(getBgRect(), 0f, 360f, false, it) }
             val index = startAngle / 360
             if (index % 2 == 0) {
                 swipeAngle = startAngle % 720 / 2
             } else {
                 swipeAngle = 360 - startAngle % 720 / 2
             }
-            canvas.drawArc(
-                getOvalRect(), startAngle.toFloat(), swipeAngle.toFloat(), false,
-                createPaint()
-            )
+            createPaint()?.let {
+                canvas.drawArc(
+                    getOvalRect(), startAngle.toFloat(), swipeAngle.toFloat(), false,
+                    it
+                )
+            }
         }
 
         private fun getBgRect(): RectF {
-            width = getWidth()
-            height = getHeight()
+            w = getWidth()
+            h = getHeight()
             if (bgRect == null) {
                 val offset = (density * 2).toInt()
                 bgRect = RectF(
                     offset.toFloat(),
                     offset.toFloat(),
-                    (width - offset).toFloat(),
-                    (height - offset).toFloat()
+                    (w - offset).toFloat(),
+                    (h - offset).toFloat()
                 )
             }
-            return bgRect
+            return bgRect as RectF
         }
 
         private fun getOvalRect(): RectF {
-            width = getWidth()
-            height = getHeight()
+            w = getWidth()
+            h = getHeight()
             if (ovalRect == null) {
                 val offset = (density * 8).toInt()
                 ovalRect = RectF(
                     offset.toFloat(),
                     offset.toFloat(),
-                    (width - offset).toFloat(),
-                    (height - offset).toFloat()
+                    (w - offset).toFloat(),
+                    (h - offset).toFloat()
                 )
             }
-            return ovalRect
+            return ovalRect as RectF
         }
 
         fun setProgressColor(progressColor: Int) {

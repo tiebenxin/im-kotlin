@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:textMessage="" />
+        android:text="" />
 
     <TextView
         android:id="@+id/tv_broadcast"
@@ -31,7 +31,7 @@
         android:padding="3dp"
         android:singleLine="false"
         android:textColor="@color/gray_500"
-        android:textMessage="----以下是新消息----"
+        android:text="----以下是新消息----"
         android:textSize="12sp"
         android:visibility="gone" />
 
@@ -81,7 +81,7 @@
                 android:gravity="left"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:textMessage="name" />
+                android:text="name" />
 
             <FrameLayout
                 android:id="@+id/view_bubble_root"
@@ -112,7 +112,8 @@
                             android:gravity="center_vertical"
                             android:scaleType="fitXY"
                             android:selectAllOnFocus="true"
-                            android:src="@drawable/ic_info_head" />
+                            />
+<!--                         android:src="@drawable/ic_info_head"-->
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -130,7 +131,7 @@
                                 android:selectAllOnFocus="true"
                                 android:textColor="@color/c_259048"
                                 android:textIsSelectable="false"
-                                android:textMessage="name"
+                                android:text="name"
                                 android:textSize="13sp" />
 
                             <androidx.appcompat.widget.AppCompatTextView
@@ -144,7 +145,7 @@
                                 android:selectAllOnFocus="true"
                                 android:textColor="@color/c_727272"
                                 android:textIsSelectable="false"
-                                android:textMessage="图片"
+                                android:text="图片"
                                 android:textSize="11sp" />
 
 
@@ -167,7 +168,7 @@
                         android:selectAllOnFocus="true"
                         android:textColor="@color/black"
                         android:textIsSelectable="false"
-                        android:textMessage=""
+                        android:text=""
                         android:textSize="15sp" />
 
                 </LinearLayout>

@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:textMessage="" />
+        android:text="" />
 
     <TextView
         android:id="@+id/tv_broadcast"
@@ -31,7 +31,7 @@
         android:padding="3dp"
         android:singleLine="false"
         android:textColor="@color/gray_500"
-        android:textMessage="----以下是新消息----"
+        android:text="----以下是新消息----"
         android:textSize="12sp"
         android:visibility="gone" />
 
@@ -80,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginBottom="2dp"
                 android:gravity="left"
-                android:textMessage="name" />
+                android:text="name" />
 
             <FrameLayout
                 android:id="@+id/view_bubble_root"
@@ -121,13 +121,13 @@
                             android:id="@+id/tv_location"
                             style="@style/app_txt_title_2"
                             android:textColor="@color/white"
-                            android:textMessage="湘江时代(长沙市岳麓区)" />
+                            android:text="湘江时代(长沙市岳麓区)" />
 
                         <TextView
                             android:id="@+id/tv_location_desc"
                             style="@style/app_txt_content_1"
                             android:textColor="@color/white"
-                            android:textMessage="长沙市岳麓区先导路" />
+                            android:text="长沙市岳麓区先导路" />
 
                     </LinearLayout>
 

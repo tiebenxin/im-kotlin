@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:textMessage="" />
+        android:text="" />
 
     <TextView
         android:id="@+id/tv_broadcast"
@@ -31,7 +31,7 @@
         android:padding="3dp"
         android:singleLine="false"
         android:textColor="@color/gray_500"
-        android:textMessage="----以下是新消息----"
+        android:text="----以下是新消息----"
         android:textSize="12sp"
         android:visibility="gone" />
 
@@ -83,7 +83,7 @@
                 android:gravity="left"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:textMessage="name" />
+                android:text="name" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -118,7 +118,7 @@
                             android:layout_marginLeft="4dp"
                             android:layout_marginRight="8dp"
                             android:textColor="@color/black"
-                            android:textMessage="1''"
+                            android:text="1''"
                             android:textSize="15sp" />
                     </LinearLayout>
 
@@ -136,10 +136,11 @@
                     android:layout_height="8dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
-                    android:src="@mipmap/bg_red_num_small"
                     android:visibility="visible" />
+<!--                                    android:src="@mipmap/bg_red_num_small"
+-->
 
-                <ImageView
+                <ImageViewAtMessage
                     android:id="@+id/iv_voice_progress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
