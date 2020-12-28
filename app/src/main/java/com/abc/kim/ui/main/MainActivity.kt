@@ -6,6 +6,7 @@ import com.abc.core.base.BaseActivity
 import com.abc.kim.R
 import com.abc.kim.databinding.ActivityMainBinding
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 
 /**
  *@author Liszt
@@ -18,6 +19,7 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ARouter.getInstance().inject(this)
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
     }
 }

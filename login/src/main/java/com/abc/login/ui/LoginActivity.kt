@@ -9,6 +9,7 @@ import com.abc.core.utils.DeviceUtils
 import com.abc.core.utils.ToastUtil
 import com.abc.login.R
 import com.abc.login.databinding.ActivityLoginBinding
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlin.Int as Int1
@@ -18,6 +19,8 @@ import kotlin.Int as Int1
  *@date 2020/10/14
  *Description
  */
+
+@Route(path = "/login/LoginActivity")
 class LoginActivity : BaseVMActivity<LoginViewModel, ActivityLoginBinding>() {
     override fun initObserveViewModel() {
         mViewModel.loginResult.observe(this, Observer { b ->
