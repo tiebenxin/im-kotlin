@@ -2,13 +2,14 @@ package com.abc.plugin
 
 /**
  * <pre>
- *     author: dhl
+ *     author: Liszt
  *     date  : 2020/6/15
  *     desc  : 如果数量少的话，放在一个类里面就可以，如果数量多的话，可以拆分为多个类
  * </pre>
  */
 
 object Versions {
+    val multidexVersion = "2.0.0"
     val retrofit = "2.9.0"
     val appcompat = "1.1.0"
     val coreKtx = "1.3.0"
@@ -31,6 +32,8 @@ object Versions {
 }
 
 object AndroidX {
+    val multidex = "androidx.multidex:multidex:${Versions.multidexVersion}"
+
     val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     val constraintlayout =

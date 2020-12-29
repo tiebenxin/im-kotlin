@@ -1,6 +1,6 @@
 package com.abc.kim
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.abc.core.constans.AppConfig
 import com.alibaba.android.arouter.launcher.ARouter
 import com.tencent.mmkv.MMKV
@@ -12,7 +12,7 @@ import org.koin.core.context.startKoin
  *@date 2020/10/13
  *Description
  */
-class App : Application() {
+class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         AppConfig.context = this;
